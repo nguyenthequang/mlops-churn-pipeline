@@ -9,10 +9,17 @@ mlruns/
 # DVC manages data/ and champion/ via .dvc files (see data/.gitignore)
 /champion/
 
+# Trained candidate models (transient; champion is DVC-tracked)
+models/
+
 # Drift reports / local artifacts
 drift_report.html
 
 # Secrets - never commit
+.env
 *.json
-!metrics/*.json
 gdrive-credentials*
+
+# Track metrics JSON (champion.json in Week 3) EXCEPT the per-run candidate
+!metrics/*.json
+/metrics/candidate.json
