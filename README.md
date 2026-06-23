@@ -9,7 +9,7 @@ simple — the **automated, monitored plumbing is the deliverable.**
 
 | Concern | Tool |
 |---|---|
-| Data versioning | DVC + Google Drive remote |
+| Data versioning | DVC + DagsHub remote |
 | Training | scikit-learn |
 | Experiment tracking + registry | MLflow |
 | Evaluation gate | Plain Python in CI |
@@ -22,7 +22,7 @@ simple — the **automated, monitored plumbing is the deliverable.**
 
 ## Status
 
-- [ ] Week 1 — Data + DVC versioning
+- [x] Week 1 — Data + DVC versioning
 - [ ] Week 2 — Training + MLflow tracking
 - [ ] Week 3 — Evaluation gate (champion/challenger)
 - [ ] Week 4 — CI/CD with GitHub Actions
@@ -50,3 +50,8 @@ python scripts\make_batches.py   # creates batch_0/1/2.csv
   the current best model + its `metrics.json` live in DVC. The gate pulls the
   champion, compares the challenger, and promotes on a win. MLflow handles
   experiment logging (UI/screenshots) decoupled from the gate logic.
+- **DagsHub as the DVC remote (not Google Drive).** Free personal Google
+  accounts can't back a DVC remote in 2026: interactive OAuth is blocked by
+  Google, and service accounts have no Drive storage quota (a Shared Drive needs
+  paid Workspace). DagsHub gives token-based auth that works locally and in CI
+  with no browser step, plus a hosted MLflow server.
