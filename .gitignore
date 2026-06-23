@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# MLflow local tracking
+mlruns/
+
+# DVC manages data/ and champion/ via .dvc files (see data/.gitignore)
+/champion/
+
+# Drift reports / local artifacts
+drift_report.html
+
+# Secrets - never commit
+*.json
+!metrics/*.json
+gdrive-credentials*

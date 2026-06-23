@@ -1,0 +1,8 @@
+dvc[gdrive]
+pandas
+scikit-learn
+mlflow
+fastapi
+uvicorn
+evidently
+joblib
