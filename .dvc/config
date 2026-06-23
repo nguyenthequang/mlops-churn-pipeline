@@ -1,4 +1,4 @@
 [core]
-    remote = gdrive
-['remote "gdrive"']
-    url = gdrive://12UYr98l1xJ_uTRe4ZxESZoGEUYMxMNUE
+    remote = origin
+['remote "origin"']
+    url = https://dagshub.com/nguyenthequang/mlops-churn-pipeline.dvc
