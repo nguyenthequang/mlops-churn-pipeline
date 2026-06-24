@@ -24,7 +24,7 @@ simple — the **automated, monitored plumbing is the deliverable.**
 
 - [x] Week 1 — Data + DVC versioning
 - [x] Week 2 — Training + MLflow tracking
-- [ ] Week 3 — Evaluation gate (champion/challenger)
+- [x] Week 3 — Evaluation gate (champion/challenger)
 - [ ] Week 4 — CI/CD with GitHub Actions
 - [ ] Week 5 — FastAPI serving + Docker + HF Spaces deploy
 - [ ] Week 6 — Evidently drift monitoring + README polish
