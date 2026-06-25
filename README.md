@@ -1,5 +1,7 @@
 # MLOps Churn Pipeline
 
+[![ml-pipeline](https://github.com/nguyenthequang/mlops-churn-pipeline/actions/workflows/pipeline.yml/badge.svg)](https://github.com/nguyenthequang/mlops-churn-pipeline/actions/workflows/pipeline.yml)
+
 End-to-end MLOps pipeline: a code or data change triggers data versioning →
 training → an evaluation gate that blocks regressing models → automatic deploy
 → drift monitoring. The model (churn classifier on tabular data) is deliberately
@@ -25,7 +27,7 @@ simple — the **automated, monitored plumbing is the deliverable.**
 - [x] Week 1 — Data + DVC versioning
 - [x] Week 2 — Training + MLflow tracking
 - [x] Week 3 — Evaluation gate (champion/challenger)
-- [ ] Week 4 — CI/CD with GitHub Actions
+- [x] Week 4 — CI/CD with GitHub Actions
 - [ ] Week 5 — FastAPI serving + Docker + HF Spaces deploy
 - [ ] Week 6 — Evidently drift monitoring + README polish
 
