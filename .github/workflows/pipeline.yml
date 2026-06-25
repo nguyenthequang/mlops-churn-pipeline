@@ -1,0 +1,42 @@
+name: ml-pipeline
+
+on: [push, pull_request]
+
+jobs:
+  train-and-gate:
+    runs-on: ubuntu-latest
+
+    # MLflow logging credentials (train.py reads these from the environment;
+    # the URL/username aren't secret, only the token is).
+    env:
+      MLFLOW_TRACKING_URI: https://dagshub.com/nguyenthequang/mlops-churn-pipeline.mlflow
+      MLFLOW_TRACKING_USERNAME: nguyenthequang
+      MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Configure DVC remote auth
+        env:
+          DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+        run: |
+          dvc remote modify --local origin auth basic
+          dvc remote modify --local origin user nguyenthequang
+          dvc remote modify --local origin password "$DAGSHUB_TOKEN"
+
+      - name: Pull data from DVC remote
+        run: dvc pull data/raw.dvc
+
+      - name: Train challenger
+        run: python train.py
+
+      - name: Evaluation gate (fails the job if the model regresses)
+        run: python evaluate.py
