@@ -83,8 +83,8 @@ def build_pipeline(X, n_estimators, max_depth, random_state):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default="data/raw/batch_0.csv")
-    ap.add_argument("--n-estimators", type=int, default=200)
-    ap.add_argument("--max-depth", type=int, default=None)
+    ap.add_argument("--n-estimators", type=int, default=3)
+    ap.add_argument("--max-depth", type=int, default=2)
     ap.add_argument("--random-state", type=int, default=42)
     ap.add_argument("--metrics-out", default="metrics/candidate.json")
     ap.add_argument("--model-out", default="models/candidate.joblib")
