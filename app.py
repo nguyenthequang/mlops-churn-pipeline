@@ -17,6 +17,7 @@ import os
 import joblib
 import pandas as pd
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel, Field
 
 MODEL_PATH = os.getenv("MODEL_PATH", "champion/model.joblib")
@@ -82,6 +83,12 @@ class Customer(BaseModel):
 class Prediction(BaseModel):
     churn_probability: float = Field(..., ge=0.0, le=1.0)
     churn: bool
+
+
+@app.get("/", include_in_schema=False)
+def root():
+    # Land visitors on the interactive Swagger UI instead of a bare 404.
+    return RedirectResponse(url="/docs")
 
 
 @app.get("/health")
